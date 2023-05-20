@@ -18,10 +18,10 @@ data.columns
 # Información del dataset
 data.info()
 
+#Eliminar columna no relevante
 data.drop(['Embarked','Cabin'],axis=1,inplace=True)
 
-data.info()
-
+# Mostrar un resumen estadistico de los datos
 data.describe()
 
 # Se observa que hay datos faltantes en la columna AGE, por lo tanto procederé a rellenarla con valores promedios
@@ -32,19 +32,23 @@ data.info()
 # Elimino las columnas que no tienen importancia para la predicción
 data.drop(['PassengerId','Name','SibSp','Ticket','Parch','Fare'],axis=1,inplace=True)
 
+# Obtener cantidad de valores nulos por cada columna
 data.isnull().sum()
 
+# Mostrar los tipos de datos de cada columna
 data.dtypes
 
+# Convertior la columna Edad a número entero
 data['Age'] = data['Age'].astype('int64')
 
+# Comprobar el tipo de datos resultante
 data.dtypes
 
+# Mostrar 10 registros aleatorios
 data.sample(10)
 
-data.isnull().sum()
-
-
+# Generación de gráficos
+# Gráfico de columnas de número de sobrevivientes vs fallecidos
 numero_sobrevivientes = data['Survived'].value_counts()
 plt.bar(numero_sobrevivientes.index,numero_sobrevivientes.values)
 plt.title('Número de sobrevivientes vs número de fallecidos')
@@ -92,7 +96,7 @@ score = modelo.score(X_train, y_train)
 logistic_score = round(score*100,2)
 logistic_score
 
-
+# Mostrar la matriz de confusión
 from sklearn.metrics import confusion_matrix
 matriz = confusion_matrix(y_test, y_pred)
 print('Matriz de Confusión:')
