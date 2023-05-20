@@ -9,11 +9,13 @@ data = pd.read_csv('titanic.csv')
 
 # Dimensión del dataset
 data.shape
+
 # Mostrar los 5 primeros registros
 data.head()
 
+#Nombres de las columnas
 data.columns
-
+# Información del dataset
 data.info()
 
 data.drop(['Embarked','Cabin'],axis=1,inplace=True)
